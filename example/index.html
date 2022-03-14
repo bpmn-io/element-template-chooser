@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BPMN Connector Modeling Demo</title>
+  <link rel="stylesheet" href="vendor/bpmn-js/dist/assets/diagram-js.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js-properties-panel/dist/assets/properties-panel.css" />
+  <link rel="stylesheet" href="vendor/bpmn-js-properties-panel/dist/assets/element-templates.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="canvas-parent">
+    <div class="canvas" id="canvas">
+      <div class="drop-message"><strong>Hint:</strong> Drop diagram to open.</div>
+
+      <div class="links top-links">
+        <a href="https://github.com/bpmn-io/connectors-modeling-demo" class="link" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="properties-panel" id="properties-panel"></div>
+
+    <div class="links bottom-links">
+      <button class="link" id="download-button">Download Diagram</button>
+    </div>
+  </div>
+
+  <div class="error-panel hidden">
+    <button class="toggle">Close</button>
+    <pre></pre>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
