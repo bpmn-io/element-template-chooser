@@ -9,6 +9,13 @@
     "start": "webpack serve --open",
     "lint": "eslint ."
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nico Rehwaldt",
+    "url": "https://github.com/nikku"
+  },
   "repository": "https://github.com/bpmn-io/element-template-chooser.git",
   "license": "MIT",
   "devDependencies": {
