@@ -41,6 +41,9 @@ const task = await (
 ```
 
 
+Checkout [`./example`](./example) for a full featured integration example.
+
+
 ## Run locally
 
 To run the [example app](./example), execute:
