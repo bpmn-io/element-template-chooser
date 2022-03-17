@@ -33,7 +33,7 @@
   position: absolute;
   left: 50%;
   top: 30%;
-  bottom: 5%;
+  max-height: 65%;
   transform: translate(-50%, 0);
 }
 
@@ -74,7 +74,7 @@
   padding: 0;
   list-style: none;
   overflow-y: scroll;
-  height: calc(100% - 1.5* var(--text-line-height));
+  height: calc(65vh - 1.5* var(--text-line-height));
 }
 
 .bpp-element-template-chooser__entry,
