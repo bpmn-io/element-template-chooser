@@ -73,8 +73,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow-y: scroll;
-  height: calc(65vh - 1.5* var(--text-line-height));
+  overflow-y: auto;
+  max-height: calc(65vh - 1.5* var(--text-line-height));
 }
 
 .bpp-element-template-chooser__entry,
