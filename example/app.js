@@ -19,7 +19,7 @@ import fileOpen from 'file-open';
 
 import download from 'downloadjs';
 
-import ElementTemplateChooserModule from '..';
+import ElementTemplateChooserModule from '../src';
 
 import TEMPLATES from './.camunda/element-templates/example.json';
 
