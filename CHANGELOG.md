@@ -9,6 +9,8 @@ ___Note:__ Yet to be released changes appear here._
 ## 0.0.2
 
 * `FEAT`: update styles
+* `FEAT`: provide pre-built distribution + styles ([#1](https://github.com/bpmn-io/element-template-chooser/issues/1))
+* `FEAT`: make agnostic of `elementTemplates` implementation ([#2](https://github.com/bpmn-io/element-template-chooser/issues/2))
 * `CHORE`: change programmatic API
 
 ## 0.0.1
