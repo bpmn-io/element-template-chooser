@@ -11,6 +11,7 @@ ___Note:__ Yet to be released changes appear here._
 * `FEAT`: update styles
 * `FEAT`: provide pre-built distribution + styles ([#1](https://github.com/bpmn-io/element-template-chooser/issues/1))
 * `FEAT`: make agnostic of `elementTemplates` implementation ([#2](https://github.com/bpmn-io/element-template-chooser/issues/2))
+* `FIX`: scroll to keyboard selected entries ([#6](https://github.com/bpmn-io/element-template-chooser/issues/6))
 * `CHORE`: change programmatic API
 
 ## 0.0.1
