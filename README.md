@@ -12,6 +12,8 @@ A simple element template chooser for [`properties-panel >= 1`](https://github.c
 ```javascript
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
+import '@bpmn-io/element-template-chooser/dist/element-template-chooser.css';
+
 import ElementTemplateChooserModule from '@bpmn-io/element-template-chooser';
 
 const modeler = new BpmnModeler({
@@ -35,8 +37,8 @@ modeler.get('elementTemplatesLoader').setTemplates(ELEMENT_TEMPLATES_JSON);
 // from a given list of element templates
 const task = modeler.get('elementRegistry').get('MyTask');
 
-const task = await (
-  modeler.get('elementTemplateChooser').choose(task, ELEMENT_TEMPLATES_JSON)
+const template = await (
+  modeler.get('elementTemplateChooser').open(task, ELEMENT_TEMPLATES_JSON)
 );
 ```
 
