@@ -5,6 +5,7 @@ import {
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState
 } from 'preact/hooks';
@@ -91,6 +92,7 @@ function TemplateComponent(props) {
   } = props;
 
   const inputRef = useRef();
+  const resultsRef = useRef();
 
   const [ value, setValue ] = useState('');
 
@@ -124,9 +126,21 @@ function TemplateComponent(props) {
 
 
   // focus input on initial mount
-  useEffect(() => {
+  useLayoutEffect(() => {
     inputRef.current.focus();
   }, []);
+
+  // scroll to keyboard selected result
+  useLayoutEffect(() => {
+
+    const containerEl = resultsRef.current;
+
+    const selectedEl = containerEl.querySelector('.selected');
+
+    if (selectedEl) {
+      selectedEl.scrollIntoViewIfNeeded();
+    }
+  }, [ keyboardSelectedTemplate ]);
 
   useEffect(() => {
     setSelectedTemplate(mouseSelectedTemplate || keyboardSelectedTemplate);
@@ -200,11 +214,11 @@ function TemplateComponent(props) {
         />
       </div>
 
-      <ul class="cmd-change-menu__results">
+      <ul class="cmd-change-menu__results" ref=${ resultsRef }>
         ${templates.map(template => html`
           <li
             key=${template.id}
-            class=${ clsx('cmd-change-menu__entry', { selected: template === keyboardSelectedTemplate }) }
+            class=${ clsx('cmd-change-menu__entry', { selected: !mouseSelectedTemplate && template === keyboardSelectedTemplate }) }
             onMouseEnter=${ () => setMouseSelectedTemplate(template) }
             onMouseLeave=${ () => setMouseSelectedTemplate(null) }
             onClick=${ () => onClose(template) }
