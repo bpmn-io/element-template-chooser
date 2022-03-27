@@ -6,6 +6,10 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.0.3
+
+* `FIX`: correct chooser title
+
 ## 0.0.2
 
 * `FEAT`: update styles
