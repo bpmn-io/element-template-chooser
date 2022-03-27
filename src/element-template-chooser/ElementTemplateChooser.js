@@ -196,7 +196,7 @@ function TemplateComponent(props) {
   return html`
     <div class="cmd-change-menu__header">
       <h3 class="cmd-change-menu__title">
-        Choose task template
+        Choose element template
       </h3>
     </div>
 
