@@ -122,11 +122,12 @@ function TemplateComponent(props) {
 
     const templates = props.entries.filter(filter);
 
+    setTemplates(templates);
+
     if (!templates.includes(selectedTemplate)) {
       setSelectedTemplate(templates[0]);
     }
 
-    setTemplates(templates);
   }, [ value, selectedTemplate, props.entries ]);
 
   // focus input on initial mount
@@ -187,7 +188,7 @@ function TemplateComponent(props) {
       return event.preventDefault();
     }
 
-  }, [ selectedTemplate ]);
+  }, [ selectedTemplate, keyboardSelect ]);
 
   const handleKey = useCallback((event) => {
     setValue(() => event.target.value);
