@@ -25,6 +25,8 @@ import TEMPLATES from './.camunda/element-templates/example.json';
 
 import exampleXML from './diagram.bpmn';
 
+import './style.css';
+
 
 const url = new URL(window.location.href);
 
