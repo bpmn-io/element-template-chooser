@@ -1,6 +1,13 @@
 
 export function scrollIntoView(el) {
-  el.scrollIntoViewIfNeeded();
+  if (typeof el.scrollIntoViewIfNeeded === 'function') {
+    el.scrollIntoViewIfNeeded();
+  } else {
+    el.scrollIntoView({
+      scrollMode: 'if-needed',
+      block: 'nearest'
+    });
+  }
 }
 
 export function categoryChanged(currentTemplate, lastTemplate) {
