@@ -6,6 +6,12 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.0.4
+
+* `FEAT`: improve mixed keyboard + mouse interaction
+* `FEAT`: support categories and search ([#5](https://github.com/bpmn-io/element-template-chooser/issues/5))
+* `FIX`: corrent scroll to element not working on Firefox ([#10](https://github.com/bpmn-io/element-template-chooser/issues/10))
+
 ## 0.0.3
 
 * `FIX`: correct chooser title
