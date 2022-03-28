@@ -24,9 +24,12 @@ import clsx from 'clsx';
  * Wraps all needed structural and UX changes (i.e. positioning logic)
  * so components can build on top to do actual things.
  *
+ * @param {didi.Injector} injector
  * @param {EventBus} eventBus
  */
-export default function ChangeMenu(eventBus) {
+export default function ChangeMenu(injector, eventBus) {
+
+  this._eventBus = eventBus;
 
   this._container = this._createContainer({});
 
@@ -42,9 +45,19 @@ export default function ChangeMenu(eventBus) {
       this._refresh();
     }
   });
+
+  eventBus.on('changeMenu.open', () => {
+    const directEditing = injector.get('directEditing', false);
+    directEditing && directEditing.cancel();
+
+    const popupMenu = injector.get('popupMenu', false);
+    popupMenu && popupMenu.close();
+  });
+
 }
 
 ChangeMenu.$inject = [
+  'injector',
   'eventBus'
 ];
 
@@ -100,6 +113,8 @@ ChangeMenu.prototype.open = function(renderFn, options = {}) {
     element
   };
 
+  this._emit('open');
+
   this._refresh();
 
   return this._open.promise;
@@ -108,6 +123,12 @@ ChangeMenu.prototype.open = function(renderFn, options = {}) {
 ChangeMenu.prototype.close = function(result) {
 
   const open = this._open;
+
+  if (!open) {
+    return;
+  }
+
+  this._emit('close');
 
   this.reset();
 
@@ -120,6 +141,10 @@ ChangeMenu.prototype.close = function(result) {
 
 ChangeMenu.prototype.reset = function() {
   render(null, this._container);
+};
+
+ChangeMenu.prototype._emit = function(event, payload) {
+  this._eventBus.fire(`changeMenu.${ event }`, payload);
 };
 
 ChangeMenu.prototype._createContainer = function(config) {
