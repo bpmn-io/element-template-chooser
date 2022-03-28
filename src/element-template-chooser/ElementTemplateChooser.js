@@ -11,6 +11,11 @@ import {
 } from 'preact/hooks';
 
 import {
+  scrollIntoView,
+  categoryChanged
+} from '../utils';
+
+import {
   isAny
 } from 'bpmn-js/lib/util/ModelUtil';
 
@@ -29,6 +34,7 @@ import './ElementTemplateChooser.css';
  * @param {ChangeMenu} changeMenu
  */
 export default function ElementTemplateChooser(
+    config,
     eventBus,
     elementTemplates,
     changeMenu) {
@@ -36,7 +42,9 @@ export default function ElementTemplateChooser(
   this._changeMenu = changeMenu;
   this._elementTemplates = elementTemplates;
 
-  eventBus.on('elementTemplates.select', (event) => {
+  const enableChooser = !config || config.elementTemplateChooser !== false;
+
+  enableChooser && eventBus.on('elementTemplates.select', (event) => {
 
     const { element } = event;
 
@@ -45,16 +53,15 @@ export default function ElementTemplateChooser(
     this.open(templates).then(template => {
       this._applyTemplate(element, template);
     }).catch(err => {
-      if (err === 'user-canceled') {
-        console.log('elementTemplate.select :: user canceled');
+      if (err !== 'user-canceled') {
+        console.error('elementTemplate.select :: error', err);
       }
-
-      console.error('elementTemplate.select', err);
     });
   });
 }
 
 ElementTemplateChooser.$inject = [
+  'config.connectorsExtension',
   'eventBus',
   'elementTemplates',
   'changeMenu'
@@ -74,7 +81,7 @@ ElementTemplateChooser.prototype.open = function(templates) {
 
   const renderFn = (onClose) => html`
     <${TemplateComponent}
-      templates=${ templates }
+      entries=${ templates }
       onClose=${ onClose }
     />
   `;
@@ -96,10 +103,8 @@ function TemplateComponent(props) {
 
   const [ value, setValue ] = useState('');
 
-  const [ templates, setTemplates ] = useState(props.templates);
-  const [ keyboardSelectedTemplate, setKeyboardSelectedTemplate ] = useState(null);
-  const [ mouseSelectedTemplate, setMouseSelectedTemplate ] = useState(null);
-  const [ selectedTemplate, setSelectedTemplate ] = useState(null);
+  const [ templates, setTemplates ] = useState(props.entries);
+  const [ selectedTemplate, setSelectedTemplate ] = useState(templates[0]);
 
   useEffect(() => {
 
@@ -108,22 +113,21 @@ function TemplateComponent(props) {
         return true;
       }
 
-      return [ template.name, template.description || '' ].join('---').toLowerCase().includes(value.toLowerCase());
+      return [
+        template.name,
+        template.description || '',
+        template.search || ''
+      ].join('---').toLowerCase().includes(value.toLowerCase());
     };
 
-    const templates = props.templates.filter(filter);
+    const templates = props.entries.filter(filter);
 
-    if (!templates.includes(keyboardSelectedTemplate)) {
-      setKeyboardSelectedTemplate(templates[0]);
-    }
-
-    if (!templates.includes(mouseSelectedTemplate)) {
-      setMouseSelectedTemplate(null);
+    if (!templates.includes(selectedTemplate)) {
+      setSelectedTemplate(templates[0]);
     }
 
     setTemplates(templates);
-  }, [ value, keyboardSelectedTemplate, mouseSelectedTemplate, props.templates ]);
-
+  }, [ value, selectedTemplate, props.entries ]);
 
   // focus input on initial mount
   useLayoutEffect(() => {
@@ -138,17 +142,13 @@ function TemplateComponent(props) {
     const selectedEl = containerEl.querySelector('.selected');
 
     if (selectedEl) {
-      selectedEl.scrollIntoViewIfNeeded();
+      scrollIntoView(selectedEl);
     }
-  }, [ keyboardSelectedTemplate ]);
-
-  useEffect(() => {
-    setSelectedTemplate(mouseSelectedTemplate || keyboardSelectedTemplate);
-  }, [ keyboardSelectedTemplate, mouseSelectedTemplate ]);
+  }, [ selectedTemplate ]);
 
   const keyboardSelect = useCallback(direction => {
 
-    const idx = templates.indexOf(keyboardSelectedTemplate);
+    const idx = templates.indexOf(selectedTemplate);
 
     let nextIdx = idx + direction;
 
@@ -160,8 +160,8 @@ function TemplateComponent(props) {
       nextIdx = 0;
     }
 
-    setKeyboardSelectedTemplate(templates[nextIdx]);
-  }, [ templates, keyboardSelectedTemplate ]);
+    setSelectedTemplate(templates[nextIdx]);
+  }, [ templates, selectedTemplate ]);
 
   const handleKeyDown = useCallback(event => {
 
@@ -201,7 +201,7 @@ function TemplateComponent(props) {
     </div>
 
     <div class="cmd-change-menu__body">
-      <div class="cmd-change-menu__search">
+      <div class=${ clsx('cmd-change-menu__search', { hidden: props.entries.length < 5 }) }>
         <svg class="cmd-change-menu__search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.0325 8.5H9.625L13.3675 12.25L12.25 13.3675L8.5 9.625V9.0325L8.2975 8.8225C7.4425 9.5575 6.3325 10 5.125 10C2.4325 10 0.25 7.8175 0.25 5.125C0.25 2.4325 2.4325 0.25 5.125 0.25C7.8175 0.25 10 2.4325 10 5.125C10 6.3325 9.5575 7.4425 8.8225 8.2975L9.0325 8.5ZM1.75 5.125C1.75 6.9925 3.2575 8.5 5.125 8.5C6.9925 8.5 8.5 6.9925 8.5 5.125C8.5 3.2575 6.9925 1.75 5.125 1.75C3.2575 1.75 1.75 3.2575 1.75 5.125Z" fill="#22242A"/>
         </svg>
@@ -215,12 +215,19 @@ function TemplateComponent(props) {
       </div>
 
       <ul class="cmd-change-menu__results" ref=${ resultsRef }>
-        ${templates.map(template => html`
+        ${templates.map((template, idx) => html`
+
+          ${ categoryChanged(template, templates[idx - 1]) && html`
+            <li
+              key=${ template.category.id }
+              class="cmd-change-menu__entry_header"
+            >${ template.category.name }</li>
+          ` }
+
           <li
             key=${template.id}
-            class=${ clsx('cmd-change-menu__entry', { selected: !mouseSelectedTemplate && template === keyboardSelectedTemplate }) }
-            onMouseEnter=${ () => setMouseSelectedTemplate(template) }
-            onMouseLeave=${ () => setMouseSelectedTemplate(null) }
+            class=${ clsx('cmd-change-menu__entry', { selected: template === selectedTemplate }) }
+            onMouseEnter=${ () => setSelectedTemplate(template) }
             onClick=${ () => onClose(template) }
             data-entry-id=${template.id}
           >
