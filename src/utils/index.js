@@ -1,4 +1,3 @@
-
 export function scrollIntoView(el) {
   if (typeof el.scrollIntoViewIfNeeded === 'function') {
     el.scrollIntoViewIfNeeded();
@@ -10,9 +9,11 @@ export function scrollIntoView(el) {
   }
 }
 
-export function categoryChanged(currentTemplate, lastTemplate) {
-  const currentCategory = currentTemplate && currentTemplate.category;
-  const lastCategory = lastTemplate && lastTemplate.category;
+export function sanitizeImageUrl(url) {
 
-  return (currentCategory && currentCategory.id) != (lastCategory && lastCategory.id);
+  if (url && /^(https?|data):/.test(url)) {
+    return url;
+  }
+
+  return null;
 }
