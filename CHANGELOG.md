@@ -6,6 +6,11 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.0.5
+
+* `FEAT`: support `icon`
+* `FEAT`: support `documentationRef`
+
 ## 0.0.4
 
 * `FEAT`: improve mixed keyboard + mouse interaction
