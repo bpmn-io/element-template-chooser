@@ -33,12 +33,9 @@ modeler.on('elementTemplates.errors', event => {
 
 modeler.get('elementTemplatesLoader').setTemplates(ELEMENT_TEMPLATES_JSON);
 
-// alternatively, choose programmatically
-// from a given list of element templates
-const task = modeler.get('elementRegistry').get('MyTask');
-
+// alternatively, open the chooser programmatically
 const template = await (
-  modeler.get('elementTemplateChooser').open(task, ELEMENT_TEMPLATES_JSON)
+  modeler.get('elementTemplateChooser').open(ELEMENT_TEMPLATES_JSON)
 );
 ```
 
