@@ -32,8 +32,8 @@ import './ElementTemplateChooser.css';
  * An element template chooser that hooks into
  * properties panel fired "choose template" events.
  *
+ * @param {Object} config
  * @param {EventBus} eventBus
- * @param {didi.Injector} injector
  * @param {ElementTemplates} elementTemplates
  * @param {ChangeMenu} changeMenu
  */
