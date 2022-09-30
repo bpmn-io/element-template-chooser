@@ -4,7 +4,7 @@ import css from 'rollup-plugin-css-only';
 
 import pkg from './package.json';
 
-function pgl(plugins=[]) {
+function pgl(plugins = []) {
   return [
     css({ output: 'element-template-chooser.css' }),
     resolve({

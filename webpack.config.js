@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const path = require('path');
 
 const CopyPlugin = require('copy-webpack-plugin');
@@ -15,7 +17,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
         test: /\.bpmn$/,

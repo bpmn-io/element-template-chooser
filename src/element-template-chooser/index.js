@@ -4,5 +4,5 @@ export default {
   __init__: [
     'elementTemplateChooser'
   ],
-  elementTemplateChooser: ['type', ElementTemplateChooser]
+  elementTemplateChooser: [ 'type', ElementTemplateChooser ]
 };
