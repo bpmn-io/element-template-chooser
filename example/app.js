@@ -1,6 +1,6 @@
 import ZeebeModdle from 'zeebe-bpmn-moddle/resources/zeebe.json';
 
-import ZeebeModdleModule from 'zeebe-bpmn-moddle/lib';
+import ZeebeBehaviorModule from 'camunda-bpmn-js-behaviors/lib/camunda-cloud';
 
 import {
   BpmnPropertiesPanelModule,
@@ -62,7 +62,7 @@ const modeler = new BpmnModeler({
     BpmnPropertiesProviderModule,
     ZeebePropertiesProviderModule,
     CloudElementTemplatesPropertiesProviderModule,
-    ZeebeModdleModule
+    ZeebeBehaviorModule
   ],
   exporter: {
     name: 'element-template-chooser-demo',
