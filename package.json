@@ -9,7 +9,8 @@
     "build:example": "NODE_ENV=production webpack",
     "start": "webpack serve --open",
     "lint": "eslint .",
-    "prepare": "npm run bundle"
+    "prepare": "npm run bundle",
+    "test": "echo 'no tests ;-)'"
   },
   "source": "src/index.js",
   "main": "dist/index.js",
