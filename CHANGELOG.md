@@ -6,6 +6,10 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.1.0
+
+* `DEPS`: bump dependencies
+
 ## 0.0.5
 
 * `FEAT`: support `icon`
