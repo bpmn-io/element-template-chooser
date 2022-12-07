@@ -1,9 +1,11 @@
-import ElementTemplateChooserModule from './element-template-chooser';
-import ChangeMenuModule from './change-menu';
+import ElementTemplateChooser from './ElementTemplateChooser';
+import ElementTemplateChooserEntryProvider from './ElementTemplateChooserEntryProvider';
 
 export default {
-  __depends__: [
-    ElementTemplateChooserModule,
-    ChangeMenuModule
-  ]
+  __init__: [
+    'elementTemplateChooser',
+    'elementTemplateChooserEntryProvider'
+  ],
+  elementTemplateChooser: [ 'type', ElementTemplateChooser ],
+  elementTemplateChooserEntryProvider: [ 'type', ElementTemplateChooserEntryProvider ]
 };
