@@ -24,7 +24,7 @@ const modeler = new BpmnModeler({
   ...
 });
 
-// load templates and choose via the properties panel
+// load templates
 modeler.on('elementTemplates.errors', event => {
   const { errors } = event;
 
@@ -33,9 +33,10 @@ modeler.on('elementTemplates.errors', event => {
 
 modeler.get('elementTemplatesLoader').setTemplates(ELEMENT_TEMPLATES_JSON);
 
-// alternatively, open the chooser programmatically
+// choose via the properties panel, _OR_
+// open the chooser programmatically for a given element
 const template = await (
-  modeler.get('elementTemplateChooser').open(ELEMENT_TEMPLATES_JSON)
+  modeler.get('elementTemplateChooser').open(element)
 );
 ```
 

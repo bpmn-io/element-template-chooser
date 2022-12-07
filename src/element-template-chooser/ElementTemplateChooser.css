@@ -1,5 +1,0 @@
-.cmd-element-template-chooser .cmd-change-menu__overlay {
-  top: calc((100vh - 350px) / 3);
-  left: 50%;
-  transform: translateX(-50%);
-}
