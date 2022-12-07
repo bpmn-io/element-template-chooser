@@ -6,6 +6,15 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.2.0
+
+* `FEAT`: use modern popup menu foundations
+* `DEPS`: update to `bpmn-js@11`
+
+### Breaking Changes
+
+* API changed to `ElementTemplateChooser.open(element) => Promise<Template>`
+
 ## 0.1.0
 
 * `DEPS`: bump dependencies
