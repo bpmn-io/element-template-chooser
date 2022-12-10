@@ -50,7 +50,7 @@
   },
   "peerDependencies": {
     "bpmn-js": ">= 11",
-    "diagram-js": "^11.3.0"
+    "diagram-js": ">= 11.3.0"
   },
   "sideEffects": [
     "*.css"
