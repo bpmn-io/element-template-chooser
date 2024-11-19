@@ -6,6 +6,8 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+* `FEAT`: restore focus on the canvas when pop up is closed
+
 ## 1.0.0
 
 * `FEAT`: use modern popup menu foundations
