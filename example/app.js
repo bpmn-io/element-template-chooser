@@ -5,9 +5,12 @@ import ZeebeBehaviorModule from 'camunda-bpmn-js-behaviors/lib/camunda-cloud';
 import {
   BpmnPropertiesPanelModule,
   BpmnPropertiesProviderModule,
-  ZeebePropertiesProviderModule,
-  CloudElementTemplatesPropertiesProviderModule
+  ZeebePropertiesProviderModule
 } from 'bpmn-js-properties-panel';
+
+import {
+  CloudElementTemplatesPropertiesProviderModule
+} from 'bpmn-js-element-templates';
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
