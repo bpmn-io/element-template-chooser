@@ -61,7 +61,7 @@ ElementTemplateChooser.prototype.open = function(element) {
   const restoreCanvasFocus = () => {
 
     // Only available with diagram-js >= 15.0.0
-    if (canvas && canvas.restoreFocus) {
+    if (canvas.restoreFocus) {
       canvas.restoreFocus();
     }
   };
