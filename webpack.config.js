@@ -30,7 +30,8 @@ module.exports = {
       patterns: [
         { from: '*.html', context: 'example', to: '.' },
         { from: 'bpmn-js/dist/assets/**/*', context: 'node_modules', to: './vendor' },
-        { from: 'bpmn-js-properties-panel/dist/assets/**/*', context: 'node_modules', to: './vendor' }
+        { from: '@bpmn-io/properties-panel/dist/assets/**/*', context: 'node_modules', to: './vendor' },
+        { from: 'bpmn-js-element-templates/dist/assets/**/*', context: 'node_modules', to: './vendor' }
       ],
     }),
   ],
