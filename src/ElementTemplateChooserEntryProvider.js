@@ -63,7 +63,8 @@ ElementTemplateChooserEntryProvider.prototype.getTemplateEntries = function(elem
 
     const {
       icon = {},
-      category
+      category,
+      keywords = []
     } = template;
 
     const entryId = `apply-template-${ template.id }`;
@@ -73,6 +74,7 @@ ElementTemplateChooserEntryProvider.prototype.getTemplateEntries = function(elem
       description: template.description && translate(template.description),
       documentationRef: template.documentationRef,
       imageUrl: icon.contents,
+      search: keywords,
       group: category && { ...category, name: translate(category.name) },
       action: () => {
         eventBus.fire('elementTemplateChooser.chosen', { element, template });
