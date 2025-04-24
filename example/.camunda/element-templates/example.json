@@ -4,6 +4,10 @@
     "name": "Email Task",
     "id": "io.camunda.examples.EmailTask",
     "description": "A Email sending task.",
+    "keywords": [ 
+      "send email",
+      "secret keyword"
+    ],
     "documentationRef": "https://github.com/bpmn-io/element-template-chooser",
     "appliesTo": [
       "bpmn:ServiceTask"
