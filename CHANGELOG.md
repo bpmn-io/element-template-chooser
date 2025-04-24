@@ -8,7 +8,7 @@ ___Note:__ Yet to be released changes appear here._
 
 # 1.1.0
 
-* `FEAT`: forward keywords to make them searchable
+* `FEAT`: forward keywords to make them searchable ([#24](https://github.com/bpmn-io/element-template-chooser/pull/24))
 * `DEPS`: update peer to `diagram-js@15.3.0`
 
 ## 1.0.0
