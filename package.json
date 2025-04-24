@@ -1,6 +1,6 @@
 {
   "name": "@bpmn-io/element-template-chooser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple element template chooser",
   "scripts": {
     "dev": "npm start",
