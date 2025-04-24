@@ -6,6 +6,17 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.0.0
+
+_Reintroduce changes from `v1.1.0`._
+
+* `FEAT`: forward keywords to make them searchable ([#24](https://github.com/bpmn-io/element-template-chooser/pull/24))
+* `DEPS`: update peer to `diagram-js@15.3.0`
+
+### Breaking Changes
+
+* Now requires `diagram-js@^15.3.0` as a peer dependency. 
+
 ## 1.1.1
 
 _Reverts `v1.1.0` due to breaking changes._
