@@ -1,6 +1,5 @@
 import {
-  getBusinessObject,
-  isAny
+  getBusinessObject
 } from 'bpmn-js/lib/util/ModelUtil';
 
 /**
@@ -91,8 +90,8 @@ ElementTemplateChooserEntryProvider.prototype.getTemplateEntries = function(elem
  * @return {Array<ElementTemplate>}
  */
 ElementTemplateChooserEntryProvider.prototype._getMatchingTemplates = function(element) {
-  return this._elementTemplates.getLatest().filter(template => {
-    return isAny(element, template.appliesTo) && !isTemplateApplied(element, template);
+  return this._elementTemplates.getLatest(element).filter(template => {
+    return !isTemplateApplied(element, template);
   });
 };
 
