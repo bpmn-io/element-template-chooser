@@ -6,6 +6,10 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 2.1.0
+
+* `FEAT`: use `getLatest` to filter templates ([#29](https://github.com/bpmn-io/element-template-chooser/pull/29))
+
 ## 2.0.0
 
 _Reintroduce changes from `v1.1.0`._
@@ -15,7 +19,7 @@ _Reintroduce changes from `v1.1.0`._
 
 ### Breaking Changes
 
-* Now requires `diagram-js@^15.3.0` as a peer dependency. 
+* Now requires `diagram-js@^15.3.0` as a peer dependency.
 
 ## 1.1.1
 
