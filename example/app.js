@@ -71,9 +71,6 @@ const modeler = new BpmnModeler({
     name: 'element-template-chooser-demo',
     version: '0.0.0'
   },
-  keyboard: {
-    bindTo: document
-  },
   propertiesPanel: {
     parent: '#properties-panel'
   },
