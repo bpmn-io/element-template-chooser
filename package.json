@@ -29,7 +29,7 @@
     "@bpmn-io/properties-panel": "^3.44.0",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "bpmn-js": "^18.17.0",
+    "bpmn-js": "^18.17.1",
     "bpmn-js-element-templates": "^2.25.0",
     "bpmn-js-properties-panel": "^5.58.0",
     "camunda-bpmn-js-behaviors": "^1.16.1",
