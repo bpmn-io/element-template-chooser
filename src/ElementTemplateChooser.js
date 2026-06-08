@@ -29,8 +29,8 @@ export default function ElementTemplateChooser(
 
     const { element } = event;
 
-    this.open(element).then(template => {
-      elementTemplates.applyTemplate(element, template);
+    this.open(element).then(({ template, presetId }) => {
+      elementTemplates.applyTemplate(element, template, { presetId });
     }).catch(err => {
       if (err !== 'user-canceled') {
         console.error('elementTemplate.select :: error', err);
@@ -61,11 +61,11 @@ ElementTemplateChooser.prototype.open = function(element) {
 
     eventBus.once('elementTemplateChooser.chosen', event => {
 
-      const { template } = event;
+      const { template, presetId } = event;
 
       eventBus.off('popupMenu.close', handleClosed);
 
-      resolve(template);
+      resolve({ template, presetId });
     });
 
     popupMenu.open(element, 'element-template-chooser', { x: 0, y: 0 }, {
