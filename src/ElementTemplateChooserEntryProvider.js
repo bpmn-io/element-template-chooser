@@ -68,6 +68,43 @@ ElementTemplateChooserEntryProvider.prototype.getTemplateEntries = function(elem
 
     const entryId = `apply-template-${ template.id }`;
 
+    /**
+     * Build the navigation action for a node (the template or one of its steps).
+     *
+     * A node with steps becomes a navigable category (via nested `entries`); a
+     * leaf applies the template (via `action`), optionally with a step's `presetId`.
+     *
+     * @param {Object} node template or step carrying `steps` and/or `presetId`
+     * @param {string} idPrefix
+     *
+     * @return {Object} `{ entries }` for a category or `{ action }` for a leaf
+     */
+    function getEntryAction(node, idPrefix) {
+      if (!node.steps?.length) {
+        return {
+          action: () => {
+            eventBus.fire('elementTemplateChooser.chosen', { element, template, presetId: node.presetId });
+          }
+        };
+      }
+
+      const entries = node.steps.reduce((entries, step) => {
+        const id = `${ idPrefix }-step-${ step.name }`;
+
+        entries[id] = {
+          label: translate(step.name),
+          description: step.description && translate(step.description),
+          imageUrl: icon.contents,
+          search: step.keywords,
+          ...getEntryAction(step, id)
+        };
+
+        return entries;
+      }, {});
+
+      return { entries };
+    }
+
     return [ entryId, {
       label: template.name && translate(template.name),
       description: template.description && translate(template.description),
@@ -75,9 +112,7 @@ ElementTemplateChooserEntryProvider.prototype.getTemplateEntries = function(elem
       imageUrl: icon.contents,
       search: keywords,
       group: category && { ...category, name: translate(category.name) },
-      action: () => {
-        eventBus.fire('elementTemplateChooser.chosen', { element, template });
-      }
+      ...getEntryAction(template, entryId)
     } ];
   });
 };
