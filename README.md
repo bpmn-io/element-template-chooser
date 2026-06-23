@@ -35,9 +35,12 @@ modeler.get('elementTemplatesLoader').setTemplates(ELEMENT_TEMPLATES_JSON);
 
 // choose via the properties panel, _OR_
 // open the chooser programmatically for a given element
-const template = await (
+const { template, presetId } = await (
   modeler.get('elementTemplateChooser').open(element)
 );
+
+// apply the chosen template (with the selected operation preset, if any)
+modeler.get('elementTemplates').applyTemplate(element, template, { presetId });
 ```
 
 
