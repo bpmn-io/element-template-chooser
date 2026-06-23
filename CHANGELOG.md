@@ -6,6 +6,15 @@ All notable changes to [@bpmn-io/element-template-chooser](https://github.com/ca
 
 ___Note:__ Yet to be released changes appear here._
 
+## 3.0.0
+
+* `FEAT`: support multi-step pop-up menu entries ([#31](https://github.com/bpmn-io/element-template-chooser/pull/31))
+* `DEPS`: update peer to `diagram-js@15.15.0`
+
+### Breaking Changes
+
+* `ElementTemplateChooser#open(element)` now resolves with `{ template, presetId }` instead of the bare `template`.
+
 ## 2.1.0
 
 * `FEAT`: use `getLatest` to filter templates ([#29](https://github.com/bpmn-io/element-template-chooser/pull/29))
