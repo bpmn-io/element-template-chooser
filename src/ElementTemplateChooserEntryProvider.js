@@ -88,8 +88,8 @@ ElementTemplateChooserEntryProvider.prototype.getTemplateEntries = function(elem
         };
       }
 
-      const entries = node.steps.reduce((entries, step) => {
-        const id = `${ idPrefix }-step-${ step.name }`;
+      const entries = node.steps.reduce((entries, step, index) => {
+        const id = `step-${ index }`;
 
         entries[id] = {
           label: translate(step.name),
