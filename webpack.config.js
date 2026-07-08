@@ -27,6 +27,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: '*.html', context: 'example', to: '.' },
+        { from: 'diagram-js/assets/**/*', context: 'node_modules', to: './vendor' },
         { from: 'bpmn-js/dist/assets/**/*', context: 'node_modules', to: './vendor' },
         { from: '@bpmn-io/properties-panel/dist/assets/**/*', context: 'node_modules', to: './vendor' },
         { from: 'bpmn-js-element-templates/dist/assets/**/*', context: 'node_modules', to: './vendor' }
