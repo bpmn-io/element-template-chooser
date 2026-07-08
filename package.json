@@ -36,7 +36,7 @@
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.4",
     "downloadjs": "^1.4.7",
-    "eslint": "^9.25.1",
+    "eslint": "^9.39.4",
     "eslint-plugin-bpmn-io": "^2.3.1",
     "file-drops": "^0.7.0",
     "file-open": "^0.2.0",
