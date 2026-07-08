@@ -26,13 +26,13 @@
   "license": "MIT",
   "devDependencies": {
     "@bpmn-io/add-exporter": "^0.2.0",
-    "@bpmn-io/properties-panel": "^3.44.1",
+    "@bpmn-io/properties-panel": "^3.47.0",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "bpmn-js": "^18.18.0",
-    "bpmn-js-element-templates": "^2.26.0",
-    "bpmn-js-properties-panel": "^5.59.0",
-    "camunda-bpmn-js-behaviors": "^1.16.1",
+    "bpmn-js": "^18.21.0",
+    "bpmn-js-element-templates": "^2.27.0",
+    "bpmn-js-properties-panel": "^5.60.0",
+    "camunda-bpmn-js-behaviors": "^1.18.0",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.4",
     "downloadjs": "^1.4.7",
@@ -47,7 +47,7 @@
     "webpack": "^5.107.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.5",
-    "zeebe-bpmn-moddle": "^1.15.0"
+    "zeebe-bpmn-moddle": "^1.16.0"
   },
   "peerDependencies": {
     "bpmn-js": ">= 11",
