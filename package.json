@@ -41,7 +41,7 @@
     "eslint-plugin-bpmn-io": "^2.4.0",
     "file-drops": "^0.7.0",
     "file-open": "^0.2.0",
-    "npm-run-all2": "^9.0.2",
+    "npm-run-all2": "^9.0.3",
     "rollup": "^4.63.1",
     "rollup-plugin-css-only": "^4.5.5",
     "style-loader": "^4.0.0",
