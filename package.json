@@ -48,7 +48,7 @@
     "webpack": "^5.110.3",
     "webpack-cli": "^7.2.3",
     "webpack-dev-server": "^6.0.0",
-    "zeebe-bpmn-moddle": "^1.16.0"
+    "zeebe-bpmn-moddle": "^2.0.0"
   },
   "peerDependencies": {
     "bpmn-js": ">= 11",
